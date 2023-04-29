@@ -43,7 +43,7 @@ InvalidCredentialException = HTTPException(
 
 def get(*, db_session, user_id: int) -> Optional[DispatchUser]:
     """Returns a user based on the given user id."""
-    return db_session.query(DispatchUser).filter(DispatchUser.id == user_id).one_or_none()
+    return DispatchUser.one(DispatchUser.id == user_id)
 
 
 def get_by_email(*, db_session, email: str) -> Optional[DispatchUser]:
